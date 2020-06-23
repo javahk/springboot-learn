@@ -10,12 +10,18 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class AspectLog {
 
-//    @Pointcut("@annotation(com.springboot.learn._2aop.ascpect.Log)")
-//    private void method1() {
-//    }
-
-    @Pointcut("execution(* com.springboot.learn._2aop.service.UserService.*(..))")
+    /**
+     * 使用注解进行切入
+     */
+    @Pointcut("@annotation(com.springboot.learn._2aop.ascpect.Log)")
     private void method1() {
+    }
+
+    /**
+     * 使用表达式进行切入
+     */
+    @Pointcut("execution(* com.springboot.learn._2aop.service.UserService.*(..))")
+    private void method2() {
     }
 
     @Before("method1()")

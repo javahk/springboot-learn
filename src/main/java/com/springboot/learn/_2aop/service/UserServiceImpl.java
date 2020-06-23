@@ -2,22 +2,27 @@ package com.springboot.learn._2aop.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.springboot.learn._2aop.ascpect.Log;
 import com.springboot.learn.mapper.UserMapper;
 import com.springboot.learn.model.User;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
-    @Log
+//    @Log
+    @Transactional
     @Override
     public int addUser(User user) {
         userMapper.addUser(user);
+
+        // 模拟aop事务回滚
         throw new RuntimeException("123");
     }
 

@@ -5,11 +5,13 @@ import com.springboot.learn._2aop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
 
-//    @Autowired
+    @Resource
     private UserService userService;
 
     /*Get方式方便web测试*/
